@@ -1,0 +1,36 @@
+<div class="container mt-5 mb-5 pl-5 " align="center">
+  <div class="row">
+    <form>
+      <div class="form-group">
+        <label for="phone-number">To Do List</label>
+        <table>
+          <td>
+            <input class="form-control" placeholder="Enter Task Name" aria-autocomplete="none"
+              [ngModelOptions]="{standalone: true}" [(ngModel)]="taskName" type="text" id="phone-number">
+          </td>
+          <td>
+            <button class="btn btn-success" (click)="addNewTask()">Add Task</button>
+          </td>
+        </table>
+      </div>
+      <table>
+        <td>
+          To-do list
+        </td>
+        <tbody *ngIf="toDos && toDos.length < 1">
+          <tr>
+            No Task Found..please Add
+          </tr>
+        </tbody>
+        <tbody *ngIf="toDos && toDos.length > 0">
+          <tr *ngFor="let item of toDos; let i= index">
+            <td>
+              {{item.taskName}}
+            </td>
+            <td><button class="btn btn-danger" (click)="deleteTask(i,item.id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
